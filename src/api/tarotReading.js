@@ -3,19 +3,28 @@ const GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
 export async function getAIReading(cardName, isReversed, keywords) {
   const direction = isReversed ? '역방향' : '정방향';
   
-  const prompt = `당신은 20년 경력의 따뜻한 타로 마스터입니다.
-  
+  const prompt = `당신은 20년 경력의 따뜻하고 통찰력 있는 타로 마스터입니다.
+
 뽑힌 카드: ${cardName} (${direction})
 카드 키워드: ${keywords.join(', ')}
 
-위 카드를 뽑은 사람에게 따뜻하고 시적인 타로 해석을 해주세요.
+아래 형식으로 타로 해석을 작성해주세요:
+
+[현재 상황 읽기]
+지금 당신의 상황과 에너지를 2~3문장으로 따뜻하게 읽어주세요.
+
+[카드가 전하는 메시지]
+이 카드가 당신에게 전하고 싶은 핵심 메시지를 2~3문장으로 시적이고 감성적으로 써주세요.
+
+[앞으로의 방향]
+구체적인 행동 조언이나 마음가짐을 2문장으로 희망적으로 마무리해주세요.
 
 규칙:
 - 한국어로 자연스럽고 감성적으로
-- 150자 내외로 간결하게
-- 부정적인 내용도 희망적으로 마무리
-- "당신" 으로 호칭
-- 마치 달빛 아래 조용히 속삭이듯이`;
+- 전체 300자 내외
+- "당신"으로 호칭
+- 절대 카드 이름을 그대로 반복하지 말 것
+- 점술이 아닌 따뜻한 인생 조언처럼`;
 
   try {
     const response = await fetch(
@@ -27,14 +36,13 @@ export async function getAIReading(cardName, isReversed, keywords) {
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
             temperature: 0.9,
-            maxOutputTokens: 300,
+            maxOutputTokens: 600,
           }
         })
       }
     );
 
     const data = await response.json();
-    console.log('Gemini 응답:', data);
     
     if (!data.candidates || !data.candidates[0]) {
       console.error('Gemini 응답 오류:', data);
