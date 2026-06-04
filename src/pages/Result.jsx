@@ -121,7 +121,6 @@ function Result({ cardId, onBack }) {
         backgroundColor: '#252530',
         border: '1px solid rgba(201,169,110,0.3)',
         marginBottom: '28px',
-        minHeight: '200px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
