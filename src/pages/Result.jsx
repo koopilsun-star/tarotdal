@@ -27,9 +27,7 @@ function Result({ cardId, onBack }) {
     <div style={{
       minHeight: '100vh',
       backgroundColor: '#0D0D2B',
-      display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center',
       padding: '40px 24px',
       fontFamily: "'Paperlogy', Georgia, serif",
     }}>
@@ -96,8 +94,7 @@ function Result({ cardId, onBack }) {
         gap: '10px',
         marginBottom: '36px',
         flexWrap: 'wrap',
-        justifyContent: 'center',
-      }}>
+        }}>
         {card.keywords.map((kw, i) => (
           <span key={i} style={{
             padding: '8px 18px',
