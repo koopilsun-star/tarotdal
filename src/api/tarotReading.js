@@ -28,7 +28,7 @@ export async function getAIReading(cardName, isReversed, keywords) {
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
             temperature: 0.8,
-            maxOutputTokens: 500,
+            maxOutputTokens: 1000,
           }
         })
       }
