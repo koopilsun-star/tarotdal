@@ -27,9 +27,13 @@ function Result({ cardId, onBack }) {
     <div style={{
       minHeight: '100vh',
       backgroundColor: '#0D0D2B',
+      display: 'flex',
       flexDirection: 'column',
+      alignItems: 'center',
       padding: '40px 24px',
       fontFamily: "'Paperlogy', Georgia, serif",
+      boxSizing: 'border-box',
+      width: '100%',
     }}>
 
       <button onClick={onBack} style={{
@@ -43,9 +47,8 @@ function Result({ cardId, onBack }) {
         fontWeight: 'bold',
         border: '2px solid #C9A96E',
         cursor: 'pointer',
-        marginBottom: '48px',
+        marginBottom: '40px',
         fontFamily: "'Paperlogy', Georgia, serif",
-        letterSpacing: '0.05em',
       }}>
         ← 다시 뽑기
       </button>
@@ -58,7 +61,8 @@ function Result({ cardId, onBack }) {
         overflow: 'hidden',
         boxShadow: '0 0 50px rgba(201,169,110,0.4)',
         transform: isReversed ? 'rotate(180deg)' : 'rotate(0deg)',
-        marginBottom: '36px',
+        marginBottom: '32px',
+        flexShrink: 0,
       }}>
         <img
           src={`/cards/card_${imageIndex}.png`}
@@ -72,8 +76,7 @@ function Result({ cardId, onBack }) {
         fontWeight: 'bold',
         color: '#C9A96E',
         textAlign: 'center',
-        textShadow: '0 0 20px rgba(201,169,110,0.5)',
-        marginBottom: '10px',
+        marginBottom: '8px',
         fontFamily: "'Paperlogy', Georgia, serif",
       }}>
         {card.nameKo}
@@ -83,8 +86,7 @@ function Result({ cardId, onBack }) {
         color: '#AAAAAA',
         fontSize: '14px',
         textAlign: 'center',
-        marginBottom: '24px',
-        letterSpacing: '0.05em',
+        marginBottom: '20px',
       }}>
         {card.name} · {isReversed ? '역방향 🔄' : '정방향 ⬆️'}
       </p>
@@ -92,9 +94,10 @@ function Result({ cardId, onBack }) {
       <div style={{
         display: 'flex',
         gap: '10px',
-        marginBottom: '36px',
+        marginBottom: '28px',
         flexWrap: 'wrap',
-        }}>
+        justifyContent: 'center',
+      }}>
         {card.keywords.map((kw, i) => (
           <span key={i} style={{
             padding: '8px 18px',
@@ -103,7 +106,6 @@ function Result({ cardId, onBack }) {
             color: '#C9A96E',
             border: '1px solid #C9A96E',
             fontSize: '14px',
-            fontFamily: "'Paperlogy', Georgia, serif",
           }}>
             {kw}
           </span>
@@ -114,13 +116,11 @@ function Result({ cardId, onBack }) {
         width: '100%',
         maxWidth: '360px',
         borderRadius: '20px',
-        padding: '28px 24px',
+        padding: '24px',
         backgroundColor: '#252530',
         border: '1px solid rgba(201,169,110,0.3)',
-        marginBottom: '28px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        marginBottom: '24px',
+        boxSizing: 'border-box',
       }}>
         {loading ? (
           <p style={{
@@ -128,7 +128,6 @@ function Result({ cardId, onBack }) {
             fontSize: '14px',
             textAlign: 'center',
             opacity: 0.7,
-            fontFamily: "'Paperlogy', Georgia, serif",
           }}>
             🌙 달빛이 카드를 읽고 있습니다...
           </p>
@@ -138,7 +137,9 @@ function Result({ cardId, onBack }) {
             fontSize: '16px',
             lineHeight: '1.9',
             textAlign: 'center',
-            fontFamily: "'Paperlogy', Georgia, serif",
+            margin: 0,
+            whiteSpace: 'pre-wrap',
+            wordBreak: 'keep-all',
           }}>
             {aiReading}
           </p>
@@ -152,7 +153,6 @@ function Result({ cardId, onBack }) {
         maxWidth: '320px',
         lineHeight: '1.8',
         paddingBottom: '40px',
-        fontFamily: "'Paperlogy', Georgia, serif",
       }}>
         {card.description}
       </p>
