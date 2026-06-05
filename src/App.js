@@ -8,7 +8,13 @@ function App() {
   const [selectedCard, setSelectedCard] = useState(null);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#0D0D2B' }}>
+    <div style={{
+      width: '100%',
+      maxWidth: '480px',
+      margin: '0 auto',
+      minHeight: '100vh',
+      backgroundColor: '#0D0D2B',
+    }}>
       {screen === 'home' && (
         <Home onStart={() => setScreen('drawing')} />
       )}
